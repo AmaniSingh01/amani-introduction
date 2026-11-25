@@ -237,6 +237,66 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-top
 .role-lifecycle{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0 20px}.role-lifecycle div{padding:14px;border:1px solid #3b4b40;min-height:115px}.role-lifecycle span{font:10px 'DM Mono',monospace;color:var(--rust)}.role-lifecycle b{display:block;font-size:11px;margin:9px 0 6px}.role-lifecycle small{font-size:9px;line-height:1.5;color:var(--muted)}
 @media(max-width:950px){.systems-grid,.role-lifecycle{grid-template-columns:repeat(2,1fr)}.method-compare,.scrum-layout{grid-template-columns:1fr}.scrum-roles{grid-template-columns:1fr}.ai-taxonomy,.genai-grid{grid-template-columns:1fr}.toolkit-grid{grid-template-columns:repeat(2,1fr)}.ai-branches{padding:12px 0}}
 
+
+/* Clean, presenter-led Infosys chapter */
+.process-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch;margin:18px 0 12px}
+.process-node{position:relative;border:1px solid #506253;background:rgba(220,235,220,.035);padding:18px 16px;min-height:125px}
+.process-node:not(:last-child):after{content:'→';position:absolute;right:-17px;top:43%;z-index:2;color:var(--rust);font-size:22px}
+.process-node .symbol{font-size:24px;color:var(--olive);display:block;margin-bottom:10px}
+.process-node b{font:500 17px 'Playfair Display',Georgia,serif;display:block;margin-bottom:7px}
+.process-node small{font-size:10px;line-height:1.5;color:var(--muted)}
+.process-sub{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0 20px}
+.process-sub span{border:1px solid #435447;padding:8px 11px;font-size:10px;color:#c8d1c6}
+.capability-table,.toolkit-table{width:100%;border-collapse:collapse;margin:15px 0 12px;font-size:11px}
+.capability-table th,.capability-table td,.toolkit-table th,.toolkit-table td{border-bottom:1px solid #39483d;padding:12px 13px;text-align:left;vertical-align:top}
+.capability-table th,.toolkit-table th{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--rust)}
+.capability-table td:first-child{font-weight:600;color:#e7eee4;white-space:nowrap}
+.capability-table td{color:#bdc8bc;line-height:1.5}
+.process-link{font-size:10px;color:var(--muted);margin:10px 0 0}
+.implementation-vertical{max-width:560px;margin:18px auto 8px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.impl-step{width:100%;display:grid;grid-template-columns:48px 1fr;align-items:center;padding:12px 18px;border:1px solid #465747;background:rgba(220,235,220,.035)}
+.impl-step .sym{font-size:22px;color:var(--olive);text-align:center}
+.impl-step b{font:500 17px 'Playfair Display',Georgia,serif}
+.impl-arrow{font-size:20px;color:var(--rust);line-height:1.2}
+.loop-note{text-align:center;color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:.1em;margin:12px}
+.radial-landscape{position:relative;max-width:760px;height:420px;margin:16px auto 5px}
+.radial-landscape .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;display:grid;place-items:center;text-align:center;background:#25352b;border:1px solid #8a9b7b;font:500 18px 'Playfair Display',Georgia,serif;z-index:2;padding:15px}
+.radial-landscape .orbit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:300px;height:300px;border:1px solid #566b58;border-radius:50%}
+.radial-landscape .orbit2{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:440px;height:440px;border:1px dashed #405346;border-radius:50%}
+.tech-node{position:absolute;z-index:3;min-width:82px;text-align:center;padding:10px 12px;border:1px solid #61745f;border-radius:30px;background:#17231c;font:10px 'DM Mono',monospace;color:#e0e9dc}
+.tech-node small{display:block;font:8px 'DM Sans',sans-serif;color:var(--muted);margin-top:3px}
+.t1{left:calc(50% - 40px);top:0}.t2{right:4%;top:17%}.t3{right:0;top:52%}.t4{right:17%;bottom:0}.t5{left:calc(50% - 40px);bottom:-3%}.t6{left:8%;bottom:12%}.t7{left:0;top:48%}.t8{left:5%;top:15%}.t9{right:8%;top:1%}
+.landscape-caption{text-align:center;color:var(--muted);font-size:10px;line-height:1.6;max-width:680px;margin:12px auto}
+.ai-map{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px;margin:22px auto 16px;align-items:stretch}
+.ai-hierarchy{border:1px solid #83a9b0;background:rgba(131,169,176,.07);padding:16px;display:flex;flex-direction:column;gap:10px}
+.ai-tier{border:1px solid #83a9b0;background:rgba(131,169,176,.09);padding:14px;text-align:center}
+.ai-tier b{font:500 17px 'Playfair Display',Georgia,serif}.ai-tier small{display:block;color:var(--muted);font-size:9px;margin-top:5px}
+.ai-tier.ml{margin:0 20px;border-color:#9ba77d;background:rgba(155,167,125,.10)}
+.ai-tier.dl{margin:0 20px;border-color:#c49a68;background:rgba(196,154,104,.11)}
+.ai-arrow{font:14px 'DM Mono',monospace;color:var(--rust);text-align:center;line-height:1}
+.ai-approaches{margin-top:auto;padding:12px 8px 0;border-top:1px solid #435447;text-align:center}
+.ai-approaches b{font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#c8d3c5}
+.ai-approach-tags{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:9px}
+.ai-concepts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ai-concept{border:1px solid #435447;background:rgba(220,235,220,.025);padding:16px 13px;display:flex;flex-direction:column;justify-content:center;min-height:105px}
+.ai-concept b{font:500 16px 'Playfair Display',Georgia,serif}.ai-concept small{font:9px 'DM Mono',monospace;color:var(--muted);margin-top:7px;text-transform:uppercase;letter-spacing:.06em}
+.ai-bot-note{border-top:1px solid #435447;padding:13px 2px;margin-top:14px;display:flex;gap:14px;align-items:baseline}
+.ai-bot-note b{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#c8d3c5;white-space:nowrap}
+.ai-bot-note small{font-size:10px;line-height:1.55;color:var(--muted)}
+@media(max-width:700px){.ai-map{grid-template-columns:1fr}.ai-bot-note{display:block}.ai-bot-note b{display:block;margin-bottom:6px}}
+.toolkit-table td{color:#bdc8bc;line-height:1.5}.toolkit-table td:first-child{font-weight:600;color:#e7eee4;white-space:nowrap}
+@media(max-width:950px){.process-flow{grid-template-columns:1fr}.process-node:not(:last-child):after{content:'↓';right:50%;top:auto;bottom:-20px}.radial-landscape{transform:scale(.82);transform-origin:top center;margin-bottom:-60px}.toolkit-table{font-size:9px}.toolkit-table td,.toolkit-table th{padding:8px 6px}}
+
+
+.software-table,.ai-tools-table{margin:16px 0 8px;width:100%;border-collapse:collapse}
+.software-table th,.software-table td,.ai-tools-table th,.ai-tools-table td{padding:9px 10px;border-bottom:1px solid #34443a;text-align:left;vertical-align:top;font-size:10px;line-height:1.45}
+.software-table th,.ai-tools-table th{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#c49a68}
+.software-table td:first-child,.ai-tools-table td:first-child{font-weight:700;color:#e7eee4;white-space:nowrap}
+.software-table td:nth-child(2),.ai-tools-table td:nth-child(2){color:#c3cec1}
+.software-table td:last-child,.ai-tools-table td:last-child{color:#aebbad}
+@media(max-width:700px){.software-table th,.software-table td,.ai-tools-table th,.ai-tools-table td{font-size:8px;padding:6px 5px}}
+.jd-table{margin-top:12px}.jd-table td:first-child{min-width:155px}.jd-table td{line-height:1.5}.jd-table th:first-child{width:19%}.jd-table th:nth-child(2){width:39%}.jd-table th:nth-child(3){width:42%}
+
 </style>
 </head>
 <body>
@@ -330,10 +390,11 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-top
 
 <section id="infosys" class="view hidden">
  <div class="panel-head"><h3>Infosys BPM / Digital Delivery</h3><span>Explore the opportunity</span></div>
- <div class="infosys-intro">Two perspectives: how Digital Delivery works, and why I want to build my career in it.</div>
+ <div class="infosys-intro">Three perspectives: how Digital Delivery works, why I want to join, and how I understand the language used in the role description.</div>
  <div class="subnav" id="infosysNav" aria-label="Infosys chapter sections">
   <button class="subchapter active" data-sub="understanding"><span class="subcircle">01</span><span>My understanding</span></button>
   <button class="subchapter" data-sub="motivation"><span class="subcircle">02</span><span>Why I want to join</span></button>
+  <button class="subchapter" data-sub="jdterms"><span class="subcircle">03</span><span>JD terms</span></button>
  </div>
 
  <div id="understanding" class="subpanel">
@@ -345,138 +406,227 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-top
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">01</span><div><div class="eyebrow">The business</div><h5>First, understand the work.</h5></div></div>
-   <div class="business-map">
-    <div class="map-center"><span class="map-symbol">◎</span><b>Business process</b><small>How work moves through an organisation</small></div>
-    <div class="map-spokes">
-     <div class="map-node"><span>◷</span><b>Time</b><small>Where does work slow down?</small></div>
-     <div class="map-node"><span>⌁</span><b>Quality</b><small>Where do errors happen?</small></div>
-     <div class="map-node"><span>⇄</span><b>Handoffs</b><small>Who depends on whom?</small></div>
-     <div class="map-node"><span>◫</span><b>Visibility</b><small>Can teams see progress?</small></div>
-    </div>
+   <div class="section-heading"><span class="section-index">01</span><div><div class="eyebrow">Understand the business · Process first</div><h5>Understand the process → identify the limitations → define the need.</h5></div></div>
+   <div class="process-flow">
+    <div class="process-node"><span class="symbol">◎</span><b>01 · Understand the process</b><small>Map the end-to-end process. Understand every step, its purpose, inputs, outputs, people, systems and dependencies.</small></div>
+    <div class="process-node"><span class="symbol">⌕</span><b>02 · Understand the limitations</b><small>Where does work slow down? Where do errors occur? Which teams depend on each other? Can people see work status?</small></div>
+    <div class="process-node"><span class="symbol">◇</span><b>03 · Understand the client's need</b><small>What problem has the client approached us to solve? What outcome matters: speed, cost, quality, control or visibility?</small></div>
    </div>
-   <p class="section-copy">My understanding is that Infosys BPM works with organisations across business functions to run and improve processes. Digital Delivery is the technology enabler: it develops and implements Workflow, Reporting, RPA and AI solutions to improve efficiency and productivity across domains. It also identifies improvement opportunities through structured ideation programmes, top-down and bottom-up process assessments, and Lean / Six Sigma methodologies. The starting point is not choosing a tool. It is understanding the process, the people involved and the outcome the business needs.</p>
+   <div class="process-sub"><span>Process study</span><span>Stakeholder conversations</span><span>As-is mapping</span><span>Root-cause analysis</span><span>Business requirements</span></div>
+   <div class="callout-line"><span>Then</span><b>Select the right technology or combination of capabilities to improve the process — not the other way around.</b></div>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">02</span><div><div class="eyebrow">The technology</div><h5>Then choose the right enabler.</h5></div></div>
-   <div class="tech-grid">
-    <article class="tech-card"><span class="tech-icon">⚙</span><b>Workflow solutions</b><p>Route work, approvals, tasks and exceptions across people and systems.</p></article>
-    <article class="tech-card"><span class="tech-icon">▥</span><b>Reporting & MIS</b><p>Make operational performance visible through reports, dashboards and management information.</p></article>
-    <article class="tech-card"><span class="tech-icon">🤖</span><b>RPA / software bots</b><p>Automate repetitive, rules-based activities across applications.</p></article>
-    <article class="tech-card"><span class="tech-icon">✳</span><b>AI</b><p>To interpret information, assist decisions and work with less-structured data.</p></article>
-    <article class="tech-card"><span class="tech-icon">⌘</span><b>Data & analytics</b><p>Identify patterns, monitor performance and make bottlenecks visible.</p></article>
-   </div>
-   <div class="callout-line"><span>My takeaway</span><b>Technology should solve a process problem — not be added just because it is available.</b></div>
+   <div class="section-heading"><span class="section-index">02</span><div><div class="eyebrow">Capabilities mapped to process needs</div><h5>Which capability helps solve which part?</h5></div></div>
+   <table class="capability-table">
+    <thead><tr><th>Capability</th><th>Role in the process</th><th>What it helps us see / do</th></tr></thead>
+    <tbody>
+     <tr><td>Workflow</td><td>Determine the sequence of work</td><td>Tasks, routing, approvals, hand-offs and exceptions</td></tr>
+     <tr><td>RPA / Bots</td><td>Perform repetitive, rules-based tasks</td><td>Move or enter information across existing applications; reduce manual effort</td></tr>
+     <tr><td>AI</td><td>Interpret information and identify patterns</td><td>Extract, classify, predict, summarise and generate content</td></tr>
+     <tr><td>Reporting & MIS</td><td>Measure operational performance</td><td>KPIs, dashboards, status, turnaround time and SLA performance</td></tr>
+     <tr><td>Data & Analytics</td><td>Investigate performance</td><td>Understand why outcomes happen; identify patterns, bottlenecks and trends</td></tr>
+    </tbody>
+   </table>
+   <p class="process-link">Reporting tells us what happened. Analytics helps investigate why it happened and what might happen next.</p>
+   <div class="consulting-strip"><b>Improvement lens</b><span>Efficiency</span><span>Productivity</span><span>Quality</span><span>Cost</span><span>Turnaround time</span><span>Visibility</span></div>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">03</span><div><div class="eyebrow">Implementation</div><h5>Make the improvement work in the real world.</h5></div></div>
-   <div class="delivery-flow">
-    <div class="delivery-step"><span>01</span><b>Discover</b><small>Understand the current process</small></div>
-    <div class="flow-arrow">→</div>
-    <div class="delivery-step"><span>02</span><b>Define</b><small>Find the issue and desired outcome</small></div>
-    <div class="flow-arrow">→</div>
-    <div class="delivery-step"><span>03</span><b>Design</b><small>Map requirements and solution</small></div>
-    <div class="flow-arrow">→</div>
-    <div class="delivery-step"><span>04</span><b>Deliver</b><small>Build, test and implement</small></div>
-    <div class="flow-arrow">→</div>
-    <div class="delivery-step"><span>05</span><b>Improve</b><small>Measure and refine</small></div>
+   <div class="section-heading"><span class="section-index">03</span><div><div class="eyebrow">Implementation</div><h5>Implementation</h5></div></div>
+   <div class="implementation-vertical">
+    <div class="impl-step"><span class="sym">⌕</span><b>Discover</b></div><div class="impl-arrow">↓</div>
+    <div class="impl-step"><span class="sym">◎</span><b>Define</b></div><div class="impl-arrow">↓</div>
+    <div class="impl-step"><span class="sym">◇</span><b>Design</b></div><div class="impl-arrow">↓</div>
+    <div class="impl-step"><span class="sym">⚙</span><b>Deliver</b></div><div class="impl-arrow">↓</div>
+    <div class="impl-step"><span class="sym">↻</span><b>Improve</b></div>
    </div>
-   <div class="implementation-points">
-    <div><span>↔</span><b>People</b><small>Stakeholders, users and delivery teams</small></div>
-    <div><span>✓</span><b>Validation</b><small>Testing, UAT and feedback</small></div>
-    <div><span>⌁</span><b>Adoption</b><small>Making the new process usable</small></div>
-   </div>
+   <div class="loop-note">↻ CONTINUOUS FEEDBACK & IMPROVEMENT</div>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">04</span><div><div class="eyebrow">Enterprise technology landscape</div><h5>Understand the systems the business already runs on.</h5></div></div>
-   <p class="section-copy">A solution rarely exists in isolation. Before proposing a new platform or automation, I would want to understand the client's application landscape, data flows, integrations, access controls and existing investments.</p>
-   <div class="systems-grid">
-    <article><span>ERP</span><b>Enterprise Resource Planning</b><small>Connects core functions such as finance, procurement, inventory and operations.</small></article>
-    <article><span>HRMS</span><b>Human Resource Management System</b><small>Employee records, payroll, leave, performance and workforce processes.</small></article>
-    <article><span>CRM</span><b>Customer Relationship Management</b><small>Customer interactions, sales pipelines, service history and account information.</small></article>
-    <article><span>ATS</span><b>Applicant Tracking System</b><small>Job requisitions, candidate pipelines, interviews and hiring status.</small></article>
+   <div class="section-heading"><span class="section-index">04</span><div><div class="eyebrow">Part 01 · Understand the process</div><h5>Enterprise technology landscape</h5></div></div>
+   <p class="section-copy">A solution rarely exists in isolation. Before proposing a new platform or automation, it is important to understand the application landscape, data flows, integrations, access controls and existing investments.</p>
+   <div class="radial-landscape">
+    <div class="orbit2"></div><div class="orbit"></div><div class="core">Company<br>processes</div>
+    <div class="tech-node t1">ERP<small>Enterprise Resource Planning</small></div>
+    <div class="tech-node t2">CRM<small>Customer relationships</small></div>
+    <div class="tech-node t3">HRMS<small>Human resources</small></div>
+    <div class="tech-node t4">ATS<small>Recruitment</small></div>
+    <div class="tech-node t5">SCM<small>Supply chain</small></div>
+    <div class="tech-node t6">MES<small>Manufacturing</small></div>
+    <div class="tech-node t7">BI<small>Business intelligence</small></div>
+    <div class="tech-node t8">IPA<small>Intelligent process automation</small></div>
+    <div class="tech-node t9">AI / ML<small>Intelligent systems</small></div>
    </div>
-   <div class="consulting-strip"><b>Consulting lens</b><span>Application landscape</span><span>Integration points</span><span>Data silos</span><span>Legacy systems</span><span>Interoperability</span><span>Scalability</span></div>
-   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>If recruiters use an ATS but onboarding sits in a separate HRMS, I would examine duplicate data entry, integration gaps, access permissions and hand-off delays before recommending another tool.</p></aside>
+   <p class="landscape-caption">A company rarely works with one system. Different platforms support different functions and connect through data, APIs and workflows.</p>
+   <table class="toolkit-table software-table">
+    <thead><tr><th>Area</th><th>What it supports</th><th>Examples of platforms / software</th></tr></thead>
+    <tbody>
+     <tr><td>ERP</td><td>Finance, procurement, inventory and core business resources</td><td>SAP S/4HANA · Oracle Fusion Cloud ERP · Microsoft Dynamics 365 · Odoo</td></tr>
+     <tr><td>CRM</td><td>Customer records, sales pipeline, campaigns and service</td><td>Salesforce · HubSpot · Zoho CRM · Microsoft Dynamics 365 Sales</td></tr>
+     <tr><td>HRMS</td><td>Employee records, payroll, leave and performance</td><td>Workday · Darwinbox · SAP SuccessFactors · Oracle HCM</td></tr>
+     <tr><td>ATS</td><td>Job postings, applicant tracking and recruitment stages</td><td>Greenhouse · Lever · Workday Recruiting · Zoho Recruit · Freshteam</td></tr>
+     <tr><td>SCM</td><td>Demand, sourcing, suppliers, inventory and logistics</td><td>SAP IBP · Oracle SCM Cloud · Blue Yonder · Manhattan Associates</td></tr>
+     <tr><td>MES</td><td>Factory-floor production, quality and traceability</td><td>Siemens Opcenter · Rockwell FactoryTalk · AVEVA MES</td></tr>
+     <tr><td>BI</td><td>Dashboards, reporting and business performance</td><td>Microsoft Power BI · Tableau · Looker · Qlik</td></tr>
+     <tr><td>IPA</td><td>Workflow + automation; RPA bots may handle repetitive, rules-based tasks</td><td>UiPath · Automation Anywhere · Microsoft Power Automate</td></tr>
+     <tr><td>AI / ML platforms</td><td>Build, train, deploy and manage machine-learning models and AI applications</td><td>Azure Machine Learning · Google Vertex AI · AWS SageMaker · Databricks · DataRobot</td></tr>
+     <tr><td>AI assistants / models</td><td>Research, writing, summarisation, analysis, coding and general-purpose assistance</td><td>ChatGPT (OpenAI GPT models) · Claude (Anthropic) · Gemini (Google) · Grok (xAI) · Microsoft Copilot · Perplexity</td></tr>
+    </tbody>
+   </table>
+   <p class="source-note"><b>Quick distinction:</b> ERP examples include SAP, Oracle, Dynamics 365 and Odoo; Jira is project / issue tracking and workflow software, not an ERP. ChatGPT, Claude, Gemini and Grok are AI assistants powered by underlying models; Azure ML, Vertex AI and SageMaker are platforms for building and managing AI/ML solutions. Google Antigravity is an AI-assisted development environment. ATS products vary by employer; these are examples, not a claim about which one Crossing Hurdles used.</p>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">05</span><div><div class="eyebrow">Ways of working</div><h5>How digital solutions move from idea to implementation.</h5></div></div>
+   <div class="section-heading"><span class="section-index">05</span><div><div class="eyebrow">Delivery methodology</div><h5>How should the solution be delivered?</h5></div></div>
    <div class="method-compare">
-    <article><div class="method-label">Plan-driven</div><h6>Waterfall</h6><div class="waterfall"><span>Requirements</span><i>↓</i><span>Design</span><i>↓</i><span>Build</span><i>↓</i><span>Test</span><i>↓</i><span>Deploy</span></div><p>Sequential phases with substantial upfront planning. Useful when scope, dependencies and acceptance criteria are relatively stable or tightly governed.</p></article>
-    <article><div class="method-label">Iterative & adaptive</div><h6>Agile</h6><div class="agile-loop"><span>Plan</span><b>→</b><span>Build</span><b>→</b><span>Review</span><b>→</b><span>Adapt</span><em>↻</em></div><p>Work is delivered in smaller increments, with regular feedback and reprioritisation as teams learn more about user needs.</p></article>
+    <article><div class="method-label">Sequential · Plan-driven</div><h6>Waterfall</h6><div class="waterfall"><span>Requirements</span><i>↓</i><span>Design</span><i>↓</i><span>Build</span><i>↓</i><span>Test</span><i>↓</i><span>Deploy</span></div><p>Clear phases · upfront planning · changes can be expensive later · suitable when scope and requirements are stable.</p></article>
+    <article><div class="method-label">Iterative · Adaptive</div><h6>Agile</h6><div class="agile-loop"><span>Plan</span><b>→</b><span>Build</span><b>→</b><span>Review</span><b>→</b><span>Adapt</span><em>↻</em></div><p>Smaller increments · frequent feedback · adapts to changing requirements · value delivered progressively.</p></article>
    </div>
-   <div class="scrum-layout">
-    <div><div class="eyebrow">A common Agile framework</div><h6>Scrum · short, focused work sprints.</h6><p>In Scrum, a cross-functional team works towards a Sprint Goal during a time-boxed Sprint, commonly one to four weeks. The team inspects progress and adapts its plan regularly.</p></div>
-    <div class="scrum-roles">
-     <div><b>Product Owner</b><small>Maximises product value and orders the Product Backlog.</small></div>
-     <div><b>Scrum Master</b><small>Establishes Scrum, coaches the team and helps remove impediments.</small></div>
-     <div><b>Developers</b><small>Plan and deliver a usable Increment each Sprint.</small></div>
+   <div class="systems-grid">
+    <article><span>01</span><b>Scrum</b><small>Agile framework using time-boxed Sprints, defined accountabilities and regular reviews.</small></article>
+    <article><span>02</span><b>Kanban</b><small>Visualise work, limit work-in-progress and manage continuous flow.</small></article>
+    <article><span>03</span><b>Lean</b><small>Maximise customer value and remove activities that do not add value.</small></article>
+    <article><span>04</span><b>DevOps</b><small>Bring development and IT operations together for reliable, continuous delivery.</small></article>
+   </div>
+   <p class="source-note">Scrum is an Agile framework. Kanban and Lean are approaches to managing and improving work; DevOps is a set of practices and culture for development and operations. The JD does not prescribe a specific delivery methodology.</p>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">06</span><div><div class="eyebrow">Artificial intelligence · Concepts</div><h5>AI: the broader field, its building blocks and related concepts.</h5></div></div>
+   <div class="ai-map">
+    <div class="ai-hierarchy">
+     <div class="ai-tier"><b>Artificial Intelligence</b><small>Systems performing tasks associated with human intelligence</small></div>
+     <div class="ai-arrow">↓ includes</div>
+     <div class="ai-tier ml"><b>Machine Learning</b><small>Learning patterns from data</small></div>
+     <div class="ai-arrow">↓ includes</div>
+     <div class="ai-tier dl"><b>Deep Learning</b><small>Multi-layer neural networks</small></div>
+     <div class="ai-approaches"><b>Machine learning approaches</b><div class="ai-approach-tags"><span class="venn-label">Supervised</span><span class="venn-label">Unsupervised</span><span class="venn-label">Reinforcement</span></div></div>
+    </div>
+    <div class="ai-concepts">
+     <div class="ai-concept"><b>Transformers</b><small>Model architecture · used in GPT, Claude and Gemini model families</small></div>
+     <div class="ai-concept"><b>NLP</b><small>Natural Language Processing · working with human language</small></div>
+     <div class="ai-concept"><b>Computer Vision</b><small>Image, video and visual information</small></div>
+     <div class="ai-concept"><b>Generative AI</b><small>Creates text, images, audio, video or code</small></div>
     </div>
    </div>
-   <div class="sprint-track"><span>Backlog refinement</span><b>→</b><span>Sprint planning</span><b>→</b><span>Daily Scrum</span><b>→</b><span>Review</span><b>→</b><span>Retrospective</span></div>
-   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>A first Sprint might focus only on automating interview reminders. The team could demo it to recruiters, gather feedback, then prioritise onboarding alerts in a later Sprint. A larger, tightly controlled system migration might instead use more plan-driven stages—or a hybrid approach.</p></aside>
-   <p class="source-note">Agile and Waterfall are delivery approaches; Scrum is a framework commonly used to put Agile principles into practice. The JD does not prescribe one delivery methodology.</p>
+   <div class="ai-bot-note"><b>RPA is separate</b><small>RPA bots follow configured rules to move data or complete repetitive steps in software. Intelligent Process Automation (IPA) can combine workflow, RPA and AI capabilities.</small></div>
+   <p class="source-note">The left side shows a simplified learning hierarchy. The right side shows related AI architectures, fields and capabilities — not four equivalent branches. Supervised, unsupervised and reinforcement learning are learning approaches.</p>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">06</span><div><div class="eyebrow">Artificial intelligence & machine learning</div><h5>Know what AI can do—and which approach fits the problem.</h5></div></div>
-   <div class="ai-stack"><div class="ai-top"><b>Artificial Intelligence (AI)</b><small>Systems performing tasks that typically require human-like intelligence</small></div><div class="ai-branches"><div><b>Machine Learning</b><small>Models learn patterns from data</small></div><div><b>Rule-based systems</b><small>Explicit logic, rules and decision trees</small></div></div><div class="ai-bottom"><b>Deep Learning</b><small>Multi-layer neural networks · a subset of Machine Learning</small><b>Generative AI</b><small>Creates new text, images, code, audio or other content</small></div></div>
-   <div class="ai-taxonomy">
-    <article class="ai-type"><div class="ai-type-head"><span>01</span><h6>Supervised learning</h6></div><p>Trains on labelled examples—input data paired with the correct outcome.</p><div class="usecase"><b>Common tasks</b><span>Classification · Regression</span></div><div class="usecase"><b>Business use</b><span>Predict candidate drop-off risk; classify support tickets; forecast hiring time.</span></div></article>
-    <article class="ai-type"><div class="ai-type-head"><span>02</span><h6>Unsupervised learning</h6></div><p>Finds patterns in unlabelled data, without a supplied target answer.</p><div class="usecase"><b>Common tasks</b><span>Clustering · Dimensionality reduction · Anomaly detection</span></div><div class="usecase"><b>Business use</b><span>Group candidates by skill profiles; identify unusual process patterns or outliers.</span></div></article>
-    <article class="ai-type"><div class="ai-type-head"><span>03</span><h6>Reinforcement learning</h6></div><p>An agent learns by taking actions and receiving rewards or penalties from its environment.</p><div class="usecase"><b>Common tasks</b><span>Sequential decisions · Optimisation</span></div><div class="usecase"><b>Business use</b><span>Explore dynamic resource allocation or scheduling where decisions affect later outcomes.</span></div></article>
-   </div>
-   <div class="genai-grid">
-    <article><span>GENERATIVE AI</span><b>Large Language Models</b><small>Draft, summarise, classify and answer questions about text; e.g. assist with job-description summaries or recruiter knowledge search.</small></article>
-    <article><span>GENERATIVE AI</span><b>Multimodal models</b><small>Work across combinations of text, images, audio and video; e.g. extract information from varied document formats—with validation.</small></article>
-    <article><span>AI IN OPERATIONS</span><b>Human-in-the-loop</b><small>People review sensitive or consequential outputs, handle exceptions and provide feedback.</small></article>
-   </div>
-   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>With historical labelled hiring data, supervised learning might estimate time-to-fill. Without labelled categories, unsupervised clustering could reveal groups of similar requisitions. A generative AI assistant could summarise a job description or recruiter notes—but should not independently make hiring decisions. Data privacy, bias, explainability and human oversight matter.</p></aside>
-   <p class="source-note">“Types of AI” can mean different taxonomies. The practical categories above describe learning approaches and capabilities used in business. Narrow AI / Artificial General Intelligence / superintelligence is a separate capability-based discussion; AGI and superintelligence remain theoretical rather than ordinary enterprise tools.</p>
+   <div class="section-heading"><span class="section-index">07</span><div><div class="eyebrow">Artificial intelligence · Applications</div><h5>Different AI assistants — different jobs.</h5></div></div>
+   <p class="section-copy">These are examples of AI products and model families. The best choice depends on the task, data access, security requirements and the organisation's approved tools.</p>
+   <table class="toolkit-table ai-tools-table">
+    <thead><tr><th>Use case</th><th>Examples</th><th>Where they can help</th></tr></thead>
+    <tbody>
+     <tr><td>General-purpose assistant</td><td>ChatGPT (OpenAI · GPT models) · Claude (Anthropic · Claude models) · Gemini (Google · Gemini models) · Grok (xAI · Grok models)</td><td>Brainstorming, drafting, summarising, explaining concepts, structuring ideas and everyday analysis.</td></tr>
+     <tr><td>Research & source discovery</td><td>Perplexity · ChatGPT Deep Research · Gemini Deep Research · Claude with web search</td><td>Market / competitor research, gathering sources, comparing information and preparing research briefs. Verify important claims against original sources.</td></tr>
+     <tr><td>Documents & productivity</td><td>Microsoft 365 Copilot · Gemini for Google Workspace · ChatGPT · Claude</td><td>Drafting emails and reports, summarising meetings, working with documents and supporting spreadsheet / presentation tasks.</td></tr>
+     <tr><td>Data analysis</td><td>ChatGPT data analysis · Claude · Gemini · Microsoft Copilot in Excel</td><td>Exploring datasets, finding patterns, explaining trends, creating charts and assisting with spreadsheet analysis. Check calculations and outputs.</td></tr>
+     <tr><td>Coding & software development</td><td>GitHub Copilot · Claude Code · OpenAI Codex · Gemini Code Assist · Google Antigravity</td><td>Code suggestions, debugging, explaining code, prototyping and agent-assisted software development. Human review and testing remain essential.</td></tr>
+     <tr><td>Enterprise AI / ML platforms</td><td>Azure AI Foundry / Azure Machine Learning · Google Vertex AI · AWS SageMaker · Databricks</td><td>Build, customise, deploy and govern models or AI applications using organisational data and infrastructure.</td></tr>
+     <tr><td>Workflow & AI automation</td><td>Microsoft Copilot Studio · Power Automate · UiPath · Automation Anywhere · n8n</td><td>Connect applications, route tasks, trigger actions and combine AI assistance with workflow / RPA automation.</td></tr>
+     <tr><td>Image, video & creative generation</td><td>Adobe Firefly · Midjourney · OpenAI image generation · Google Veo · Runway</td><td>Visual concepts, image generation, video creation, storyboards and creative exploration.</td></tr>
+    </tbody>
+   </table>
+   <div class="ai-bot-note"><b>Important distinction</b><small>ChatGPT, Claude, Gemini and Grok are AI assistant products backed by their respective model families. Antigravity is a development environment / product, not a foundational model. Product features and available models change over time.</small></div>
   </section>
 
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">07</span><div><div class="eyebrow">Consulting toolkit</div><h5>Structure the problem before jumping to a solution.</h5></div></div>
-   <div class="toolkit-grid">
-    <div><b>Process discovery</b><small>Stakeholder interviews · process mapping · SIPOC · swimlane diagrams</small></div>
-    <div><b>Problem diagnosis</b><small>Root-cause analysis · 5 Whys · Fishbone · Pareto · gap analysis</small></div>
-    <div><b>Process improvement</b><small>Lean · Six Sigma · waste identification · standardisation</small></div>
-    <div><b>Solution definition</b><small>As-is / To-be · functional & non-functional requirements · user stories · acceptance criteria</small></div>
-    <div><b>Business justification</b><small>ROI · cost-benefit analysis · business case · effort-impact prioritisation</small></div>
-    <div><b>Performance measurement</b><small>KPI · SLA · TAT · baseline · target state · benefits realisation</small></div>
-   </div>
-   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>I would map the candidate journey from requisition to joining, measure baseline time at each stage, use a Pareto view to locate the biggest delay, define a to-be workflow, estimate hours saved and agree success measures with stakeholders.</p></aside>
+   <div class="section-heading"><span class="section-index">08</span><div><div class="eyebrow">Consulting toolkit</div><h5>Structure the problem before jumping to a solution.</h5></div></div>
+   <table class="toolkit-table">
+    <thead><tr><th>Concept</th><th>What it means</th><th>Example · loan process</th></tr></thead>
+    <tbody>
+     <tr><td>Process mapping</td><td>Visualise each step in the current process.</td><td>Map application → document check → credit review → approval.</td></tr>
+     <tr><td>SIPOC</td><td>Suppliers, Inputs, Process, Outputs, Customers.</td><td>Identify who supplies applicant documents and who receives the loan decision.</td></tr>
+     <tr><td>Swimlane</td><td>Show steps by team or role.</td><td>Separate customer, operations, credit and approval activities.</td></tr>
+     <tr><td>5 Whys</td><td>Ask why repeatedly to investigate a root cause.</td><td>Why is approval delayed? Missing documents; why are they missing? Unclear checklist.</td></tr>
+     <tr><td>Fishbone</td><td>Group possible causes of a problem.</td><td>Explore people, process, technology, data and policy causes of delays.</td></tr>
+     <tr><td>Pareto</td><td>Identify the few causes responsible for most impact.</td><td>Find which delay category accounts for the largest share of late applications.</td></tr>
+     <tr><td>As-is / To-be</td><td>Current process compared with desired future process.</td><td>Manual document checks → structured digital verification workflow.</td></tr>
+     <tr><td>Functional requirements</td><td>What the solution must do.</td><td>System must route a verified application to the credit team.</td></tr>
+     <tr><td>Non-functional requirements</td><td>How the solution must perform.</td><td>Secure access, reliable availability and acceptable response time.</td></tr>
+     <tr><td>ROI / Business case</td><td>Compare expected benefits with costs.</td><td>Estimate hours saved and cost of implementation and maintenance.</td></tr>
+     <tr><td>KPI / SLA / TAT</td><td>Measure performance, service commitments and processing time.</td><td>Track approval turnaround time and percentage completed within SLA.</td></tr>
+    </tbody>
+   </table>
   </section>
+  <div class="source-note">This is my synthesis of the Digital Delivery model and role description. Technology choices and delivery methods depend on each client's process, requirements and existing environment.</div>
+ </div>
 
+
+ <div id="jdterms" class="subpanel hidden">
+  <section class="story-hero">
+   <div class="eyebrow">03 / JD terms</div>
+   <h4>The language of the role — and how I understand it.</h4>
+   <p>A quick glossary of the responsibilities, methods and capabilities mentioned in the job description, with simple examples of how they could appear in a client engagement.</p>
+   <div class="hero-stamp"><span class="stamp-icon">≡</span><span>UNDERSTAND<br><b>→</b> APPLY<br><b>→</b> EXPLAIN VALUE</span></div>
+  </section>
   <section class="story-section">
-   <div class="section-heading"><span class="section-index">08</span><div><div class="eyebrow">What the role involves</div><h5>From opportunity identification to benefits realisation.</h5></div></div>
-   <div class="role-lifecycle">
-    <div><span>01</span><b>Opportunity identification</b><small>Process study · process assessments · design thinking sessions</small></div>
-    <div><span>02</span><b>Solution conceptualisation</b><small>Understand business processes and existing IT landscape; propose relevant digital solutions</small></div>
-    <div><span>03</span><b>Stakeholder communication & approvals</b><small>Engage client and Infosys BPM operations stakeholders; obtain buy-in</small></div>
-    <div><span>04</span><b>Requirements documentation</b><small>Gather, analyse and document functional and non-functional requirements</small></div>
-    <div><span>05</span><b>Development coordination & UAT</b><small>Liaise with development teams; participate in User Acceptance Testing</small></div>
-    <div><span>06</span><b>Benefits realisation</b><small>Validate proposed benefits and capture case studies / client testimonials</small></div>
-    <div><span>07</span><b>Reporting & MIS</b><small>Provide inputs to CoE teams for periodic reporting and Management Information Systems</small></div>
-   </div>
-   <div class="callout-line"><span>What ties it together</span><b>Be a solution champion: articulate the problem, show value for money, build stakeholder confidence and follow through to measurable outcomes.</b></div>
+   <div class="section-heading"><span class="section-index">01</span><div><div class="eyebrow">Finding opportunities</div><h5>Understand the process before proposing a solution.</h5></div></div>
+   <table class="toolkit-table jd-table">
+    <thead><tr><th>JD term</th><th>What I understand</th><th>Simple example</th></tr></thead>
+    <tbody>
+     <tr><td>Opportunity identification</td><td>Spot areas where a process could become faster, more accurate, more visible or less costly.</td><td>Notice that applications wait several days for a manual document check.</td></tr>
+     <tr><td>Process study</td><td>Understand the end-to-end steps, people, systems, inputs, outputs and hand-offs.</td><td>Map an application from submission through verification and approval.</td></tr>
+     <tr><td>Process assessment</td><td>Evaluate how the current process performs and where its limitations are.</td><td>Measure rework, delays, error rates and pending cases.</td></tr>
+     <tr><td>Design thinking</td><td>Explore the problem from the user's perspective and develop possible solutions.</td><td>Speak to operations staff to understand why a verification screen is difficult to use, then prototype a simpler flow.</td></tr>
+     <tr><td>Structured ideation</td><td>Use a repeatable approach to collect, assess and prioritise improvement ideas.</td><td>Run an idea session and score suggestions by impact, effort and feasibility.</td></tr>
+     <tr><td>Top-down / bottom-up assessment</td><td>Combine leadership priorities with observations and ideas from people doing the work.</td><td>Leadership highlights cost reduction; operations staff identify duplicate data entry.</td></tr>
+    </tbody>
+   </table>
   </section>
-
-  <section class="story-section outcome-section">
-   <div class="section-heading"><span class="section-index">09</span><div><div class="eyebrow">The outcome</div><h5>What does better actually look like?</h5></div></div>
-   <div class="outcome-row">
-    <div><strong>↓</strong><b>Turnaround time</b><small>Faster processing</small></div>
-    <div><strong>↓</strong><b>Manual effort</b><small>Less repetitive work</small></div>
-    <div><strong>↑</strong><b>Accuracy</b><small>Fewer errors, better control</small></div>
-    <div><strong>↑</strong><b>Visibility</b><small>Clearer decisions</small></div>
-   </div>
-   <p class="closing-thought">So, the way I see Digital Delivery is: understand the business, improve the process, use technology thoughtfully, bring people along and measure whether the change made a difference.</p>
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">02</span><div><div class="eyebrow">Designing the solution</div><h5>Turn the problem into a practical proposal.</h5></div></div>
+   <table class="toolkit-table jd-table">
+    <thead><tr><th>JD term</th><th>What I understand</th><th>Simple example</th></tr></thead>
+    <tbody>
+     <tr><td>Solution conceptualisation</td><td>Shape an initial solution that addresses the problem and fits the client's process and technology environment.</td><td>Propose a workflow for routing verified applications, with automation for repetitive checks.</td></tr>
+     <tr><td>Existing IT landscape</td><td>Understand the applications, databases, integrations, access controls and technology already in use.</td><td>Check whether applicant data sits in an ATS, CRM or internal database before suggesting another system.</td></tr>
+     <tr><td>Digital transformation</td><td>Use technology to improve how a business process works — not simply digitise an unchanged manual step.</td><td>Redesign a paper-based approval process as a trackable digital workflow.</td></tr>
+     <tr><td>Workflow</td><td>Define the sequence, routing, approvals, hand-offs and exception paths for work.</td><td>Send a complete application to the reviewer and return incomplete cases for correction.</td></tr>
+     <tr><td>RPA</td><td>Use software bots to perform repetitive, rules-based actions across applications.</td><td>Copy approved data from one system into another using configured rules.</td></tr>
+     <tr><td>AI concepts</td><td>Use AI capabilities where interpretation, prediction, classification or content generation is useful.</td><td>Extract key fields from documents or classify incoming requests for human review.</td></tr>
+     <tr><td>Lean / Six Sigma</td><td>Lean focuses on customer value and reducing waste; Six Sigma focuses on reducing process variation and defects.</td><td>Remove duplicate approval steps; analyse why document errors repeatedly occur.</td></tr>
+     <tr><td>Value for money</td><td>Show that the expected business benefit justifies the cost, effort and risk of the solution.</td><td>Compare implementation and maintenance costs with hours saved and fewer processing errors.</td></tr>
+     <tr><td>ROI / business case</td><td>Set out costs, expected benefits, assumptions, risks and the basis for investment.</td><td>Estimate annual hours saved, cost avoided and the time needed to recover implementation costs.</td></tr>
+    </tbody>
+   </table>
   </section>
-  <div class="source-note">This is my synthesis of Infosys BPM's business and digital delivery model, not a claim that every engagement follows an identical sequence or uses every technology.</div>
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">03</span><div><div class="eyebrow">Working with people and delivery teams</div><h5>Get agreement, document clearly and support implementation.</h5></div></div>
+   <table class="toolkit-table jd-table">
+    <thead><tr><th>JD term</th><th>What I understand</th><th>Simple example</th></tr></thead>
+    <tbody>
+     <tr><td>Stakeholder communication</td><td>Work with the people affected by the process or solution, understand their needs and keep them aligned.</td><td>Discuss requirements with operations, IT, compliance and the client sponsor.</td></tr>
+     <tr><td>Stakeholder buy-in / approvals</td><td>Explain the proposed change, address concerns and obtain agreement before moving forward.</td><td>Present the proposed workflow, cost and expected benefits for approval.</td></tr>
+     <tr><td>CxOs</td><td>Senior executives such as CEOs, CFOs and COOs; communication should connect the proposal to business priorities.</td><td>Explain how a change could improve turnaround time, cost or service quality.</td></tr>
+     <tr><td>Functional requirements</td><td>Specify what the solution must do.</td><td>The system must assign each complete request to the correct approval queue.</td></tr>
+     <tr><td>Non-functional requirements</td><td>Specify how well or under what conditions the solution must operate.</td><td>Define security, availability, performance, scalability and auditability expectations.</td></tr>
+     <tr><td>Development team liaison</td><td>Act as a bridge between business stakeholders and the people building the solution; clarify requirements and resolve questions.</td><td>Explain an approval rule to developers and confirm how exceptions should behave.</td></tr>
+     <tr><td>UAT — User Acceptance Testing</td><td>Support users in checking that the solution meets agreed business requirements before it goes live.</td><td>Test normal, incomplete and exception cases with operations users and record defects.</td></tr>
+     <tr><td>Cross-functional team</td><td>People from different functions working towards the same outcome.</td><td>Business analysts, operations, developers, testers, data teams and client stakeholders.</td></tr>
+    </tbody>
+   </table>
+  </section>
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">04</span><div><div class="eyebrow">Measuring and communicating impact</div><h5>Check whether the solution delivered what it promised.</h5></div></div>
+   <table class="toolkit-table jd-table">
+    <thead><tr><th>JD term</th><th>What I understand</th><th>Simple example</th></tr></thead>
+    <tbody>
+     <tr><td>Benefits realisation</td><td>Track whether the expected improvements actually occur after implementation.</td><td>Compare processing time and error rates before and after automation.</td></tr>
+     <tr><td>Reporting & MIS</td><td>Provide regular management information on operational performance and progress.</td><td>A weekly dashboard showing volume, pending cases, turnaround time and SLA achievement.</td></tr>
+     <tr><td>CoE — Centre of Excellence</td><td>A specialist group that develops standards, expertise, reusable practices and support for a capability.</td><td>Share a consistent reporting format or automation best practices across delivery teams.</td></tr>
+     <tr><td>Case study</td><td>Document the business problem, solution, implementation and measurable outcome.</td><td>Show how a redesigned workflow reduced average processing time.</td></tr>
+     <tr><td>Client testimonial</td><td>Capture the client's feedback on the value and experience of the delivered solution.</td><td>A client sponsor describes the improvement in visibility and service levels.</td></tr>
+     <tr><td>Solution champion</td><td>Build confidence in a proposal, explain its value clearly and help stakeholders move towards adoption.</td><td>Present the problem, recommendation, expected benefits and evidence in a clear story.</td></tr>
+     <tr><td>Basic programming</td><td>Understand programming logic and be able to follow or work with simple code; the JD describes this as a significant plus.</td><td>Understand variables, conditions, loops and basic SQL or scripting used to handle data.</td></tr>
+    </tbody>
+   </table>
+   <p class="source-note"><b>How I read the role overall:</b> understand a business process, identify an improvement opportunity, shape a technology-enabled solution, align stakeholders, support requirements and testing, and help measure the benefits. The examples above are illustrative explanations of the JD terms, not claims about a specific Infosys client project.</p>
+  </section>
  </div>
 
  <div id="motivation" class="subpanel hidden">
@@ -534,8 +684,16 @@ const stage=document.querySelector('.stage');
 const buttons=[...document.querySelectorAll('.node')];
 const views=[...document.querySelectorAll('.view')];
 function show(id){
- views.forEach(v=>v.classList.toggle('hidden',v.id!==id));
- buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+ views.forEach(v=>{
+  const active=v.id===id;
+  v.classList.toggle('hidden',!active);
+  v.style.display=active?'block':'none';
+ });
+ buttons.forEach(b=>{
+  const active=b.dataset.view===id;
+  b.classList.toggle('active',active);
+  b.setAttribute('aria-pressed',active?'true':'false');
+ });
  stage.classList.add('compact');
  if(id==='infosys') showSub('understanding');
  document.querySelector('.panel').scrollTop=0;
@@ -544,8 +702,16 @@ buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
 const subButtons=[...document.querySelectorAll('.subchapter')];
 const subPanels=[...document.querySelectorAll('.subpanel')];
 function showSub(id){
- subPanels.forEach(p=>p.classList.toggle('hidden',p.id!==id));
- subButtons.forEach(b=>b.classList.toggle('active',b.dataset.sub===id));
+ subPanels.forEach(p=>{
+  const active=p.id===id;
+  p.classList.toggle('hidden',!active);
+  p.style.display=active?'block':'none';
+ });
+ subButtons.forEach(b=>{
+  const active=b.dataset.sub===id;
+  b.classList.toggle('active',active);
+  b.setAttribute('aria-pressed',active?'true':'false');
+ });
  document.querySelector('.panel').scrollTop=0;
  document.getElementById('infosysNav').classList.add('compact');
 }
