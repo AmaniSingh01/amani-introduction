@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amani Singh — A journey in making</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+:root{
+ --paper:#101614;--paper2:#17211d;--ink:#edf0e9;--muted:#a0aaa1;--rule:#34423b;
+ --blue:#83a9b0;--rust:#c49a68;--olive:#9ba77d;--white:#f4f2e9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101614;color:var(--ink)}
+body{font-family:'DM Sans',Arial,sans-serif;background:radial-gradient(ellipse at 12% 8%,rgba(88,119,103,.13),transparent 34%),radial-gradient(ellipse at 90% 90%,rgba(137,112,75,.08),transparent 30%),#101614}
+.stage{width:100vw;height:100vh;min-height:650px;padding:4.5vh 5.2vw 2.5vh;display:flex;flex-direction:column;position:relative}
+.stage:before{content:"";position:absolute;inset:14px;border:1px solid rgba(190,205,190,.12);pointer-events:none}
+header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--rule);padding-bottom:2.4vh}
+.eyebrow,.micro,.year,.section-index{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
+.eyebrow{font-size:10px;color:var(--rust)}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4.3vw,66px);font-weight:500;letter-spacing:-.045em;line-height:.98;margin:12px 0 0}
+.subtitle{font-size:13px;color:var(--muted);margin-top:12px;letter-spacing:.015em}
+.header-right{font-family:'DM Mono',monospace;color:var(--muted);font-size:10px;line-height:1.8;text-align:right;letter-spacing:.08em}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:start;padding:3.1vh 1.4vw 2.8vh;position:relative}
+.timeline:before{content:"";position:absolute;left:5.3%;right:5.3%;top:29px;height:1px;background:var(--rule)}
+.milestone{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px}
+.milestone:nth-child(2){padding-left:10px}
+.node{width:58px;height:58px;border-radius:50%;border:1px solid var(--ink);background:#101614;color:var(--ink);font:500 12px 'DM Mono',monospace;cursor:pointer;transition:background .2s,color .2s,transform .2s;position:relative}
+.node.big{width:58px;height:58px;font-size:11px}
+.node:after{content:"";position:absolute;inset:5px;border:1px solid var(--rule);border-radius:50%}
+.node:hover,.node.active{background:#d1d8cb;color:#15201a;transform:scale(1.04)}
+.node.active:after{border-color:#777d5b}
+.milestone h2{font:600 14px 'DM Sans',sans-serif;margin:12px 0 4px}
+.milestone p{font-size:11px;line-height:1.45;color:var(--muted);margin:0;max-width:205px}
+.panel{flex:1;min-height:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2.1vh 1.4vw 2vh;overflow:auto;position:relative}
+.view{animation:appear .28s ease}
+.hidden{display:none!important}
+@keyframes appear{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:18px}
+.panel-head h3{font:500 clamp(21px,2vw,28px) 'Playfair Display',Georgia,serif;margin:0}
+.panel-head span{font:10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.studio-track{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0 0 2.4vh}
+.studio{padding:10px 14px 11px 0;position:relative;border-top:1px solid var(--rule);min-height:83px}
+.studio:not(:last-child){margin-right:18px}
+.studio:not(:last-child):after{content:"";position:absolute;right:-10px;top:-4px;width:7px;height:7px;border-radius:50%;background:#101614;border:1px solid var(--rust)}
+.studio .year{font-size:9px;color:var(--rust)}
+.studio strong{display:block;font-size:12px;font-weight:600;margin:8px 0 4px;line-height:1.25}
+.studio small{font-size:10px;color:var(--muted);line-height:1.4;display:block}
+.era{display:grid;grid-template-columns:1fr 1fr;gap:3.2vw}
+.column{min-width:0;position:relative;padding-top:12px}
+.column.vfx{border-top:2px solid var(--blue)}
+.column.game{border-top:2px solid var(--rust)}
+.column-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:13px}
+.column h4{font:500 21px 'Playfair Display',Georgia,serif;margin:0}
+.column .range{font:9px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.steps{display:flex;align-items:stretch;gap:0}
+.step{flex:1;min-width:0;position:relative;padding:10px 8px 8px 0;border-right:1px solid var(--rule);min-height:66px}
+.step:last-child{border-right:0}
+.step:not(:last-child){margin-right:9px}
+.step b{font-size:10px;line-height:1.3;font-weight:600;display:block}
+.step small{font-size:9px;color:var(--muted);margin-top:5px;display:block;line-height:1.3}
+.step:before{content:"";display:block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-bottom:10px}
+.vfx .step{--accent:var(--blue)}.game .step{--accent:var(--rust)}
+.team-layer{margin-top:2.1vh;display:grid;grid-template-columns:180px 1fr;align-items:center;border-top:1px solid var(--rule);padding-top:12px;gap:18px}
+.team-layer strong{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--olive)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{font-size:10px;color:#d1d9cf;border:1px solid #c2c2ae;padding:6px 10px;border-radius:2px;background:rgba(220,235,220,.035)}
+.note{font-size:9px;color:var(--muted);margin-top:9px;font-style:italic}
+.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{padding:15px 16px 17px;border:1px solid var(--rule);background:rgba(220,235,220,.035);min-height:104px;position:relative}
+.tile:before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:2px;background:var(--olive)}
+.tile .tag{font:9px 'DM Mono',monospace;color:var(--rust);text-transform:uppercase;letter-spacing:.12em}
+.tile h4{font:500 18px 'Playfair Display',Georgia,serif;margin:10px 0 5px}
+.tile p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}
+footer{display:flex;justify-content:space-between;align-items:center;padding-top:1.5vh;color:var(--muted);font:9px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.footer-mark{color:var(--rust)}
+@media(max-width:950px){
+ html,body{overflow:auto}.stage{height:auto;min-height:100vh;padding:28px 22px}.stage:before{display:none}
+ .timeline{grid-template-columns:repeat(2,1fr);gap:22px;padding:25px 0}.timeline:before{display:none}
+ .milestone:nth-child(2){padding-left:0}.panel{overflow:visible}.era{grid-template-columns:1fr;gap:22px}
+ .studio-track{grid-template-columns:1fr 1fr}.studio:not(:last-child){margin-right:0}.studio:after{display:none}
+ .steps{flex-wrap:wrap}.step{flex:1 1 28%;border-right:0;border-bottom:1px solid var(--rule);margin-right:8px!important}
+ .team-layer{grid-template-columns:1fr;gap:10px}.detail-grid{grid-template-columns:1fr 1fr}
+}
+
+/* Presentation mode: keep the chapter navigation visible but out of the way */
+.stage.compact{padding-top:2.1vh;gap:1.2vh}
+.stage.compact header{padding-bottom:1vh;align-items:center}
+.stage.compact h1{font-size:clamp(21px,2.1vw,32px);margin:4px 0 0}
+.stage.compact .subtitle,.stage.compact .header-right{display:none}
+.stage.compact .eyebrow{font-size:9px}
+.stage.compact .timeline{padding:1.1vh 1.4vw 1.2vh;grid-template-columns:repeat(4,1fr)}
+.stage.compact .timeline:before{top:17px}
+.stage.compact .node,.stage.compact .node.big{width:34px;height:34px;font-size:9px}
+.stage.compact .node:after{inset:3px}
+.stage.compact .milestone h2{font-size:10px;margin:5px 0 0;min-height:0}
+.stage.compact .milestone p{display:none}
+.stage.compact .panel{padding:2vh 1.4vw;flex:1}
+.subnav{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin:0 0 22px;padding:2px 0 16px;border-bottom:1px solid var(--rule)}
+.subchapter{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;cursor:pointer;background:none;border:0;color:var(--ink);font:inherit;padding:0}
+.subcircle{width:64px;height:64px;border-radius:50%;border:1px solid #6f8274;background:#18231e;color:var(--ink);display:grid;place-items:center;font:10px 'DM Mono',monospace;transition:.18s}
+.subchapter:hover .subcircle,.subchapter.active .subcircle{background:#d1d8cb;color:#15201a;transform:translateY(-2px)}
+.subchapter span:last-child{font-size:10px;line-height:1.3;color:var(--muted);max-width:130px}
+.subpanel{border-left:2px solid var(--olive);padding:7px 0 7px 22px;min-height:180px;animation:appear .22s ease}
+.subpanel .eyebrow{font-size:9px;color:var(--rust)}
+.subpanel h4{font:500 clamp(24px,2.5vw,36px) 'Playfair Display',Georgia,serif;margin:8px 0 12px}
+.subpanel p{font-size:14px;line-height:1.7;color:#c0c9bf;max-width:900px;margin:0}
+.subpanel .support{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.subpanel .support span{font-size:11px;color:#d1d9cf;border:1px solid #43554a;padding:7px 11px}
+.infosys-intro{font-size:12px;color:var(--muted);margin:-7px 0 18px}
+@media(max-width:950px){
+ .subnav{grid-template-columns:repeat(3,1fr)}
+ .stage.compact .timeline{grid-template-columns:repeat(4,1fr)}
+}
+
+
+.infosys-intro{font-size:12px;color:var(--muted);margin:-7px 0 14px}
+.subnav{transition:all .22s ease}
+.subnav.compact{display:flex;gap:9px;margin:0 0 13px;padding:0 0 10px}
+.subnav.compact .subchapter{flex-direction:row;gap:7px;padding:4px 9px 4px 4px;border:1px solid var(--rule);border-radius:30px}
+.subnav.compact .subcircle{width:25px;height:25px;font-size:8px;border:0;background:#27342d;color:#dce4d8}
+.subnav.compact .subchapter.active .subcircle{background:#d1d8cb;color:#15201a}
+.subnav.compact .subchapter span:last-child{font-size:9px;max-width:none}
+.subpanel{border-left:0;padding:0;min-height:0}
+.subpanel .eyebrow{font-size:9px;color:var(--rust)}
+.subpanel h4{font:500 clamp(25px,2.5vw,37px) 'Playfair Display',Georgia,serif;margin:8px 0 12px;max-width:1120px}
+.subpanel .lead{font-size:14px;line-height:1.7;color:#c4cec4;max-width:1160px;margin:0 0 22px}
+.understand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.understand-card{border:1px solid #35443a;background:rgba(218,232,218,.035);padding:16px 18px;min-height:140px}
+.understand-card h5{font:500 17px 'Playfair Display',Georgia,serif;margin:9px 0 8px;color:#e9eee5}
+.understand-card p{font-size:11px;line-height:1.65;color:#b5c0b5;margin:0}
+.card-no{font:9px 'DM Mono',monospace;color:var(--rust);letter-spacing:.12em}
+.understand-takeaway{margin-top:14px;padding:15px 18px;border-left:2px solid var(--olive);background:rgba(151,169,125,.07);display:flex;flex-direction:column;gap:8px}
+.understand-takeaway strong{font:500 18px 'Playfair Display',Georgia,serif;line-height:1.45;max-width:1120px;color:#e5ebdf}
+.source-note{font-size:9px;color:var(--muted);margin-top:12px}
+@media(max-width:950px){.understand-grid{grid-template-columns:1fr}.subnav.compact{flex-wrap:wrap}}
+
+
+/* Long-form, visual presentation chapters */
+.panel{scroll-behavior:smooth}
+.story-hero{position:relative;min-height:220px;padding:24px 30px;margin:4px 0 28px;background:linear-gradient(110deg,rgba(113,145,119,.13),rgba(196,154,104,.045));border:1px solid #34443a;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.story-hero h4{font:500 clamp(29px,3.2vw,46px) 'Playfair Display',Georgia,serif;max-width:850px;line-height:1.12;margin:12px 0}
+.story-hero p{font-size:13px;line-height:1.65;color:#b9c4b9;max-width:720px;margin:0}
+.hero-stamp{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:142px;height:142px;border:1px solid #586d5b;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:9px;color:#b9c6b6;font:9px 'DM Mono',monospace;letter-spacing:.08em;line-height:1.7}
+.stamp-icon{font-size:27px;color:var(--rust)}
+.story-section{padding:10px 0 32px;margin-bottom:25px;border-bottom:1px solid #34423b}
+.section-heading{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
+.section-index{font-size:11px;color:var(--rust);border:1px solid #705a42;padding:7px 8px}
+.section-heading .eyebrow{font-size:9px;color:var(--muted)}
+.section-heading h5{font:500 clamp(22px,2.2vw,30px) 'Playfair Display',Georgia,serif;margin:5px 0 0}
+.business-map{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center;margin:14px 0 20px}
+.map-center{min-height:150px;border:1px solid #607565;background:rgba(113,145,119,.09);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px}
+.map-symbol{font-size:31px;color:var(--olive);margin-bottom:8px}
+.map-center b{font:500 18px 'Playfair Display',Georgia,serif}
+.map-center small,.map-node small{font-size:10px;color:var(--muted);margin-top:5px}
+.map-spokes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.map-node{padding:14px;border-left:2px solid var(--olive);background:rgba(220,235,220,.035);display:grid;grid-template-columns:28px 1fr;column-gap:8px;align-items:center}
+.map-node span{grid-row:span 2;font-size:21px;color:var(--rust)}
+.map-node b{font-size:12px}.map-node small{margin:0}
+.section-copy{font-size:12px;line-height:1.75;color:#b8c3b8;max-width:1050px}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:18px 0}
+.tech-card{padding:16px 14px;border:1px solid #35443a;background:rgba(220,235,220,.035);min-height:145px;display:flex;flex-direction:column;align-items:flex-start}
+.tech-icon{width:37px;height:37px;border:1px solid #647765;color:#c49a68;display:grid;place-items:center;font-size:20px;margin-bottom:15px}
+.tech-card b{font-size:12px}.tech-card p{font-size:10px;line-height:1.55;color:var(--muted);margin:7px 0 0}
+.callout-line{border-left:2px solid var(--rust);padding:13px 18px;background:rgba(196,154,104,.07);display:flex;flex-direction:column;gap:5px}
+.callout-line span{font:9px 'DM Mono',monospace;letter-spacing:.12em;color:var(--rust);text-transform:uppercase}
+.callout-line b{font:500 17px 'Playfair Display',Georgia,serif}
+.delivery-flow{display:flex;align-items:stretch;gap:7px;margin:20px 0}
+.delivery-step{flex:1;min-width:0;padding:13px 10px;border:1px solid #3a4a3e;background:rgba(220,235,220,.035)}
+.delivery-step span{font:10px 'DM Mono',monospace;color:var(--rust)}
+.delivery-step b{display:block;font-size:12px;margin:8px 0 5px}
+.delivery-step small{display:block;font-size:9px;color:var(--muted);line-height:1.45}
+.flow-arrow{align-self:center;color:var(--olive);font-size:18px}
+.implementation-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.implementation-points div{display:grid;grid-template-columns:32px 1fr;align-items:center;padding:12px;border-top:1px solid #435447}
+.implementation-points span{grid-row:span 2;color:var(--olive);font-size:20px}
+.implementation-points b{font-size:11px}.implementation-points small{font-size:9px;color:var(--muted)}
+.outcome-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.outcome-row div{padding:16px;border:1px solid #3a493e;background:rgba(220,235,220,.035);display:flex;flex-direction:column}
+.outcome-row strong{font:500 26px 'Playfair Display',Georgia,serif;color:var(--olive)}
+.outcome-row b{font-size:11px;margin:6px 0 3px}.outcome-row small{font-size:9px;color:var(--muted)}
+.closing-thought{font:500 clamp(18px,1.8vw,24px) 'Playfair Display',Georgia,serif;line-height:1.5;color:#e3eade;max-width:1100px;margin:22px 0 0}
+.journey-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.journey-cards article{padding:15px;border:1px solid #35443a;background:rgba(220,235,220,.035);min-height:190px}
+.journey-icon{display:grid;place-items:center;width:35px;height:35px;border:1px solid #647765;color:var(--rust);font-size:19px;margin-bottom:14px}
+.journey-cards .eyebrow{font-size:9px;color:var(--muted)}
+.journey-cards b{display:block;font:500 17px 'Playfair Display',Georgia,serif;margin:7px 0}
+.journey-cards p{font-size:10px;line-height:1.6;color:#b5c0b5;margin:0}
+.bring-layout{display:grid;grid-template-columns:230px 1fr;gap:24px;align-items:center}
+.bring-core{width:190px;height:190px;border-radius:50%;border:1px solid #718472;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:rgba(113,145,119,.08);margin:auto}
+.bring-core span{font:500 26px 'Playfair Display',Georgia,serif;color:var(--rust)}
+.bring-core b{font-size:12px;margin:8px 0 4px}.bring-core small{font-size:9px;color:var(--muted)}
+.bring-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.bring-list div{padding:13px;border-left:2px solid var(--olive);background:rgba(220,235,220,.035)}
+.bring-list b{font-size:11px}.bring-list small{display:block;font-size:10px;line-height:1.5;color:var(--muted);margin-top:5px}
+.learn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.learn-grid div{padding:15px;border:1px solid #35443a;min-height:125px}
+.learn-grid span{font:10px 'DM Mono',monospace;color:var(--rust)}
+.learn-grid b{display:block;font:500 16px 'Playfair Display',Georgia,serif;margin:12px 0 7px}
+.learn-grid small{font-size:10px;line-height:1.5;color:var(--muted)}
+@media(max-width:950px){
+ .hero-stamp{display:none}.business-map{grid-template-columns:1fr}.tech-grid,.journey-cards,.learn-grid{grid-template-columns:repeat(2,1fr)}
+ .delivery-flow{flex-wrap:wrap}.delivery-step{flex:1 1 28%}.flow-arrow{display:none}
+ .outcome-row{grid-template-columns:repeat(2,1fr)}.bring-layout{grid-template-columns:1fr}
+}
+
+
+/* Extended consulting, delivery-method and AI learning panels */
+.systems-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.systems-grid article{padding:15px;border:1px solid #3a493e;background:rgba(220,235,220,.035);display:flex;flex-direction:column;gap:7px;min-height:132px}
+.systems-grid article span{font:11px 'DM Mono',monospace;color:var(--rust);letter-spacing:.12em}
+.systems-grid article b{font-size:12px}.systems-grid article small{font-size:10px;line-height:1.5;color:var(--muted)}
+.consulting-strip{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:14px 0 18px}
+.consulting-strip b{font:9px 'DM Mono',monospace;color:var(--rust);text-transform:uppercase;letter-spacing:.1em;margin-right:8px}
+.consulting-strip span{font-size:9px;padding:6px 9px;border:1px solid #435447;color:#c6d0c5}
+.example-note{margin:18px 0 0;padding:13px 16px;border:1px dashed #6c654d;background:rgba(196,154,104,.045);max-width:1120px}
+.example-note>span{font:9px 'DM Mono',monospace;letter-spacing:.12em;color:var(--rust)}
+.example-note p{font-size:11px;line-height:1.65;color:#c2cbbf;margin:8px 0 0}
+.method-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.method-compare article{padding:18px;border:1px solid #3a493e;background:rgba(220,235,220,.025)}
+.method-label{font:9px 'DM Mono',monospace;color:var(--rust);text-transform:uppercase;letter-spacing:.12em}
+.method-compare h6,.scrum-layout h6{font:500 22px 'Playfair Display',Georgia,serif;margin:8px 0 12px}
+.method-compare p,.scrum-layout p{font-size:11px;line-height:1.65;color:#b8c3b8;margin:14px 0 0}
+.waterfall{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.waterfall span,.agile-loop span{font-size:10px;padding:8px 9px;border:1px solid #506253;background:rgba(113,145,119,.07)}.waterfall i{font-style:normal;color:var(--olive)}
+.agile-loop{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.agile-loop b{color:var(--olive)}.agile-loop em{font-style:normal;font-size:25px;color:var(--rust)}
+.scrum-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:22px;margin:22px 0;padding:20px;border-left:2px solid var(--olive);background:rgba(151,169,125,.055)}
+.scrum-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:center}.scrum-roles div{padding:12px;border:1px solid #435447}.scrum-roles b{font-size:11px}.scrum-roles small{display:block;font-size:9px;line-height:1.5;color:var(--muted);margin-top:7px}
+.sprint-track{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}.sprint-track span{font-size:9px;padding:8px 10px;background:#25332a;border:1px solid #435447}.sprint-track b{color:var(--olive);font-size:12px}
+.ai-stack{max-width:850px;margin:16px auto 24px;text-align:center}.ai-top{padding:15px;border:1px solid #7b8d75;background:rgba(113,145,119,.12)}.ai-top b{display:block;font:500 19px 'Playfair Display',Georgia,serif}.ai-top small,.ai-branches small,.ai-bottom small{display:block;font-size:9px;color:var(--muted);margin-top:5px}
+.ai-branches{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 8%}.ai-branches div{padding:13px;border:1px solid #435447}.ai-branches b{font-size:12px}
+.ai-bottom{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:600px;margin:auto}.ai-bottom b{padding:10px 12px 0;border-top:1px solid #596b58;font-size:11px}.ai-bottom small{padding:0 12px 10px}
+.ai-taxonomy{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0}
+.ai-type{padding:16px;border:1px solid #3b4b40;background:rgba(220,235,220,.035)}.ai-type-head{display:flex;align-items:center;gap:10px}.ai-type-head span{font:10px 'DM Mono',monospace;color:var(--rust)}.ai-type h6{font:500 17px 'Playfair Display',Georgia,serif;margin:0}.ai-type>p{font-size:10px;line-height:1.6;color:var(--muted);min-height:48px}
+.usecase{padding-top:9px;margin-top:9px;border-top:1px solid #35443a}.usecase b{display:block;font:9px 'DM Mono',monospace;color:var(--olive);text-transform:uppercase;letter-spacing:.1em}.usecase span{display:block;font-size:10px;line-height:1.5;color:#c0c9bf;margin-top:5px}
+.genai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.genai-grid article{padding:13px;border:1px solid #435447}.genai-grid span{font:8px 'DM Mono',monospace;color:var(--rust);letter-spacing:.1em}.genai-grid b{display:block;font-size:11px;margin:7px 0}.genai-grid small{font-size:9px;line-height:1.5;color:var(--muted)}
+.toolkit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.toolkit-grid div{padding:14px;border-top:1px solid #637461;background:rgba(220,235,220,.025)}.toolkit-grid b{font-size:11px}.toolkit-grid small{display:block;font-size:10px;line-height:1.55;color:var(--muted);margin-top:7px}
+.role-lifecycle{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0 20px}.role-lifecycle div{padding:14px;border:1px solid #3b4b40;min-height:115px}.role-lifecycle span{font:10px 'DM Mono',monospace;color:var(--rust)}.role-lifecycle b{display:block;font-size:11px;margin:9px 0 6px}.role-lifecycle small{font-size:9px;line-height:1.5;color:var(--muted)}
+@media(max-width:950px){.systems-grid,.role-lifecycle{grid-template-columns:repeat(2,1fr)}.method-compare,.scrum-layout{grid-template-columns:1fr}.scrum-roles{grid-template-columns:1fr}.ai-taxonomy,.genai-grid{grid-template-columns:1fr}.toolkit-grid{grid-template-columns:repeat(2,1fr)}.ai-branches{padding:12px 0}}
+
+</style>
+</head>
+<body>
+<div class="stage">
+<header>
+ <div>
+  <div class="eyebrow">Amani Singh &nbsp; / &nbsp; Selected chapters</div>
+  <h1>A journey in making.</h1>
+  <div class="subtitle">Engineering · 3D & visual production · Game development · Management</div>
+ </div>
+ <div class="header-right">PERSONAL INTRODUCTION<br>2016 — 2026<br>SELECT A MILESTONE TO EXPLORE</div>
+</header>
+
+<nav class="timeline" aria-label="Journey timeline">
+ <div class="milestone">
+  <button class="node" data-view="engineering">2016</button>
+  <h2>Engineering</h2><p>B.E. Electrical Engineering<br>People's College of Research & Technology</p>
+ </div>
+ <div class="milestone">
+  <button class="node big active" data-view="creative">2019–24</button>
+  <h2>Creative industry</h2><p>From VFX production to game development</p>
+ </div>
+ <div class="milestone">
+  <button class="node" data-view="iim">2025–26</button>
+  <h2>IIM Amritsar</h2><p>MBA · 2025–2027<br>Projects & industry experience</p>
+ </div>
+ <div class="milestone">
+  <button class="node" data-view="infosys">WHY?</button>
+  <h2>Why Infosys BPM?</h2><p>Digital Delivery</p>
+ </div>
+</nav>
+
+<main class="panel">
+<section id="creative" class="view">
+ <div class="panel-head"><h3>Creative industry / 2019—2024</h3><span>01 — Production experience</span></div>
+ <div class="studio-track">
+  <div class="studio"><div class="year">2019</div><strong>Vaw World Studios</strong><small>3D Artist</small></div>
+  <div class="studio"><div class="year">2020—21</div><strong>Art & Visual Practice</strong><small>Freelance 3D Artist · Visual Designer</small></div>
+  <div class="studio"><div class="year">2022—23</div><strong>Technicolor Creative Studios</strong><small>3D Artist</small></div>
+  <div class="studio"><div class="year">2023</div><strong>ZombieFox Studios</strong><small>3D Artist · 3D Generalist</small></div>
+  <div class="studio"><div class="year">2024</div><strong>Game Production Internship</strong><small>Project Intern · Lancelot</small></div>
+ </div>
+ <div class="era">
+  <div class="column vfx">
+   <div class="column-head"><h4>VFX / Film</h4><span class="range">Through Technicolor</span></div>
+   <div class="steps">
+    <div class="step"><b>Concept & design</b><small>Visual direction</small></div>
+    <div class="step"><b>3D modelling</b><small>Asset creation</small></div>
+    <div class="step"><b>Retopology & UVs</b><small>Production-ready assets</small></div>
+    <div class="step"><b>Texturing</b><small>Surface & materials</small></div>
+    <div class="step"><b>Look development</b><small>Shading & look</small></div>
+    <div class="step"><b>Lighting & render</b><small>Final image output</small></div>
+   </div>
+  </div>
+  <div class="column game">
+   <div class="column-head"><h4>Gaming</h4><span class="range">ZombieFox + Lancelot</span></div>
+   <div class="steps">
+    <div class="step"><b>Concept design</b><small>Creative direction</small></div>
+    <div class="step"><b>Prototype / MVP</b><small>Test the core idea</small></div>
+    <div class="step"><b>3D production</b><small>Assets & environments</small></div>
+    <div class="step"><b>Engine integration</b><small>In-level placement</small></div>
+    <div class="step"><b>QA & feedback</b><small>Test and refine</small></div>
+    <div class="step"><b>Agile sprints</b><small>Iterate & deliver</small></div>
+   </div>
+  </div>
+ </div>
+ <div class="team-layer"><strong>Cross-functional practice</strong><div class="chips"><span class="chip">Team coordination</span><span class="chip">Task allocation</span><span class="chip">Creative / technical hand-offs</span><span class="chip">Reviews & feedback</span><span class="chip">Sprint delivery</span></div></div>
+ <div class="note">Two connected disciplines, with the VFX chapter ending at Technicolor and the gaming chapter beginning at ZombieFox.</div>
+</section>
+
+<section id="engineering" class="view hidden">
+ <div class="panel-head"><h3>2016 / Engineering</h3><span>Starting point</span></div>
+ <div class="detail-grid">
+  <div class="tile"><div class="tag">Qualification</div><h4>B.E. Electrical Engineering</h4><p>People's College of Research and Technology</p></div>
+  <div class="tile"><div class="tag">Institution</div><h4>People's University</h4><p>Bhopal, Madhya Pradesh</p></div>
+  <div class="tile"><div class="tag">Year</div><h4>2016</h4><p>Engineering foundation</p></div>
+ </div>
+</section>
+
+<section id="iim" class="view hidden">
+ <div class="panel-head"><h3>2025—2026 / IIM Amritsar</h3><span>MBA · 2025—2027</span></div>
+ <div class="detail-grid">
+  <div class="tile"><div class="tag">Marketing strategy</div><h4>ClosetLoop</h4><p>Digital marketing strategy for occasion-wear rental</p></div>
+  <div class="tile"><div class="tag">Systems & operations</div><h4>Flight Delay Propagation</h4><p>System dynamics modelling and operational interventions</p></div>
+  <div class="tile"><div class="tag">Data analytics</div><h4>Indian Film Success</h4><p>Predictive analysis using JMP Pro</p></div>
+  <div class="tile"><div class="tag">Brand strategy</div><h4>Amritsar as a Brand</h4><p>Place branding and marketing perspective</p></div>
+  <div class="tile"><div class="tag">Founder’s Office · 2026</div><h4>Crossing Hurdles</h4><p>Recruitment operations · workflow design · compliance tracking</p></div>
+  <div class="tile"><div class="tag">Marketing · 2026</div><h4>Business & brand projects</h4><p>Market research · customer understanding · strategy</p></div>
+ </div>
+</section>
+
+<section id="infosys" class="view hidden">
+ <div class="panel-head"><h3>Infosys BPM / Digital Delivery</h3><span>Explore the opportunity</span></div>
+ <div class="infosys-intro">Two perspectives: how Digital Delivery works, and why I want to build my career in it.</div>
+ <div class="subnav" id="infosysNav" aria-label="Infosys chapter sections">
+  <button class="subchapter active" data-sub="understanding"><span class="subcircle">01</span><span>My understanding</span></button>
+  <button class="subchapter" data-sub="motivation"><span class="subcircle">02</span><span>Why I want to join</span></button>
+ </div>
+
+ <div id="understanding" class="subpanel">
+  <section class="story-hero">
+   <div class="eyebrow">01 / My understanding</div>
+   <h4>Digital Delivery is where business processes meet technology.</h4>
+   <p>Infosys BPM describes Digital Delivery as its software technology arm: enabling, optimising and transforming client business processes through domain-specific platforms and solutions.</p>
+   <div class="hero-stamp"><span class="stamp-icon">↗</span><span>PROCESS<br><b>＋</b> TECHNOLOGY<br><b>＋</b> PEOPLE</span></div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">01</span><div><div class="eyebrow">The business</div><h5>First, understand the work.</h5></div></div>
+   <div class="business-map">
+    <div class="map-center"><span class="map-symbol">◎</span><b>Business process</b><small>How work moves through an organisation</small></div>
+    <div class="map-spokes">
+     <div class="map-node"><span>◷</span><b>Time</b><small>Where does work slow down?</small></div>
+     <div class="map-node"><span>⌁</span><b>Quality</b><small>Where do errors happen?</small></div>
+     <div class="map-node"><span>⇄</span><b>Handoffs</b><small>Who depends on whom?</small></div>
+     <div class="map-node"><span>◫</span><b>Visibility</b><small>Can teams see progress?</small></div>
+    </div>
+   </div>
+   <p class="section-copy">My understanding is that Infosys BPM works with organisations across business functions to run and improve processes. Digital Delivery is the technology enabler: it develops and implements Workflow, Reporting, RPA and AI solutions to improve efficiency and productivity across domains. It also identifies improvement opportunities through structured ideation programmes, top-down and bottom-up process assessments, and Lean / Six Sigma methodologies. The starting point is not choosing a tool. It is understanding the process, the people involved and the outcome the business needs.</p>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">02</span><div><div class="eyebrow">The technology</div><h5>Then choose the right enabler.</h5></div></div>
+   <div class="tech-grid">
+    <article class="tech-card"><span class="tech-icon">⚙</span><b>Workflow solutions</b><p>Route work, approvals, tasks and exceptions across people and systems.</p></article>
+    <article class="tech-card"><span class="tech-icon">▥</span><b>Reporting & MIS</b><p>Make operational performance visible through reports, dashboards and management information.</p></article>
+    <article class="tech-card"><span class="tech-icon">🤖</span><b>RPA / software bots</b><p>Automate repetitive, rules-based activities across applications.</p></article>
+    <article class="tech-card"><span class="tech-icon">✳</span><b>AI</b><p>To interpret information, assist decisions and work with less-structured data.</p></article>
+    <article class="tech-card"><span class="tech-icon">⌘</span><b>Data & analytics</b><p>Identify patterns, monitor performance and make bottlenecks visible.</p></article>
+   </div>
+   <div class="callout-line"><span>My takeaway</span><b>Technology should solve a process problem — not be added just because it is available.</b></div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">03</span><div><div class="eyebrow">Implementation</div><h5>Make the improvement work in the real world.</h5></div></div>
+   <div class="delivery-flow">
+    <div class="delivery-step"><span>01</span><b>Discover</b><small>Understand the current process</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="delivery-step"><span>02</span><b>Define</b><small>Find the issue and desired outcome</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="delivery-step"><span>03</span><b>Design</b><small>Map requirements and solution</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="delivery-step"><span>04</span><b>Deliver</b><small>Build, test and implement</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="delivery-step"><span>05</span><b>Improve</b><small>Measure and refine</small></div>
+   </div>
+   <div class="implementation-points">
+    <div><span>↔</span><b>People</b><small>Stakeholders, users and delivery teams</small></div>
+    <div><span>✓</span><b>Validation</b><small>Testing, UAT and feedback</small></div>
+    <div><span>⌁</span><b>Adoption</b><small>Making the new process usable</small></div>
+   </div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">04</span><div><div class="eyebrow">Enterprise technology landscape</div><h5>Understand the systems the business already runs on.</h5></div></div>
+   <p class="section-copy">A solution rarely exists in isolation. Before proposing a new platform or automation, I would want to understand the client's application landscape, data flows, integrations, access controls and existing investments.</p>
+   <div class="systems-grid">
+    <article><span>ERP</span><b>Enterprise Resource Planning</b><small>Connects core functions such as finance, procurement, inventory and operations.</small></article>
+    <article><span>HRMS</span><b>Human Resource Management System</b><small>Employee records, payroll, leave, performance and workforce processes.</small></article>
+    <article><span>CRM</span><b>Customer Relationship Management</b><small>Customer interactions, sales pipelines, service history and account information.</small></article>
+    <article><span>ATS</span><b>Applicant Tracking System</b><small>Job requisitions, candidate pipelines, interviews and hiring status.</small></article>
+   </div>
+   <div class="consulting-strip"><b>Consulting lens</b><span>Application landscape</span><span>Integration points</span><span>Data silos</span><span>Legacy systems</span><span>Interoperability</span><span>Scalability</span></div>
+   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>If recruiters use an ATS but onboarding sits in a separate HRMS, I would examine duplicate data entry, integration gaps, access permissions and hand-off delays before recommending another tool.</p></aside>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">05</span><div><div class="eyebrow">Ways of working</div><h5>How digital solutions move from idea to implementation.</h5></div></div>
+   <div class="method-compare">
+    <article><div class="method-label">Plan-driven</div><h6>Waterfall</h6><div class="waterfall"><span>Requirements</span><i>↓</i><span>Design</span><i>↓</i><span>Build</span><i>↓</i><span>Test</span><i>↓</i><span>Deploy</span></div><p>Sequential phases with substantial upfront planning. Useful when scope, dependencies and acceptance criteria are relatively stable or tightly governed.</p></article>
+    <article><div class="method-label">Iterative & adaptive</div><h6>Agile</h6><div class="agile-loop"><span>Plan</span><b>→</b><span>Build</span><b>→</b><span>Review</span><b>→</b><span>Adapt</span><em>↻</em></div><p>Work is delivered in smaller increments, with regular feedback and reprioritisation as teams learn more about user needs.</p></article>
+   </div>
+   <div class="scrum-layout">
+    <div><div class="eyebrow">A common Agile framework</div><h6>Scrum · short, focused work sprints.</h6><p>In Scrum, a cross-functional team works towards a Sprint Goal during a time-boxed Sprint, commonly one to four weeks. The team inspects progress and adapts its plan regularly.</p></div>
+    <div class="scrum-roles">
+     <div><b>Product Owner</b><small>Maximises product value and orders the Product Backlog.</small></div>
+     <div><b>Scrum Master</b><small>Establishes Scrum, coaches the team and helps remove impediments.</small></div>
+     <div><b>Developers</b><small>Plan and deliver a usable Increment each Sprint.</small></div>
+    </div>
+   </div>
+   <div class="sprint-track"><span>Backlog refinement</span><b>→</b><span>Sprint planning</span><b>→</b><span>Daily Scrum</span><b>→</b><span>Review</span><b>→</b><span>Retrospective</span></div>
+   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>A first Sprint might focus only on automating interview reminders. The team could demo it to recruiters, gather feedback, then prioritise onboarding alerts in a later Sprint. A larger, tightly controlled system migration might instead use more plan-driven stages—or a hybrid approach.</p></aside>
+   <p class="source-note">Agile and Waterfall are delivery approaches; Scrum is a framework commonly used to put Agile principles into practice. The JD does not prescribe one delivery methodology.</p>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">06</span><div><div class="eyebrow">Artificial intelligence & machine learning</div><h5>Know what AI can do—and which approach fits the problem.</h5></div></div>
+   <div class="ai-stack"><div class="ai-top"><b>Artificial Intelligence (AI)</b><small>Systems performing tasks that typically require human-like intelligence</small></div><div class="ai-branches"><div><b>Machine Learning</b><small>Models learn patterns from data</small></div><div><b>Rule-based systems</b><small>Explicit logic, rules and decision trees</small></div></div><div class="ai-bottom"><b>Deep Learning</b><small>Multi-layer neural networks · a subset of Machine Learning</small><b>Generative AI</b><small>Creates new text, images, code, audio or other content</small></div></div>
+   <div class="ai-taxonomy">
+    <article class="ai-type"><div class="ai-type-head"><span>01</span><h6>Supervised learning</h6></div><p>Trains on labelled examples—input data paired with the correct outcome.</p><div class="usecase"><b>Common tasks</b><span>Classification · Regression</span></div><div class="usecase"><b>Business use</b><span>Predict candidate drop-off risk; classify support tickets; forecast hiring time.</span></div></article>
+    <article class="ai-type"><div class="ai-type-head"><span>02</span><h6>Unsupervised learning</h6></div><p>Finds patterns in unlabelled data, without a supplied target answer.</p><div class="usecase"><b>Common tasks</b><span>Clustering · Dimensionality reduction · Anomaly detection</span></div><div class="usecase"><b>Business use</b><span>Group candidates by skill profiles; identify unusual process patterns or outliers.</span></div></article>
+    <article class="ai-type"><div class="ai-type-head"><span>03</span><h6>Reinforcement learning</h6></div><p>An agent learns by taking actions and receiving rewards or penalties from its environment.</p><div class="usecase"><b>Common tasks</b><span>Sequential decisions · Optimisation</span></div><div class="usecase"><b>Business use</b><span>Explore dynamic resource allocation or scheduling where decisions affect later outcomes.</span></div></article>
+   </div>
+   <div class="genai-grid">
+    <article><span>GENERATIVE AI</span><b>Large Language Models</b><small>Draft, summarise, classify and answer questions about text; e.g. assist with job-description summaries or recruiter knowledge search.</small></article>
+    <article><span>GENERATIVE AI</span><b>Multimodal models</b><small>Work across combinations of text, images, audio and video; e.g. extract information from varied document formats—with validation.</small></article>
+    <article><span>AI IN OPERATIONS</span><b>Human-in-the-loop</b><small>People review sensitive or consequential outputs, handle exceptions and provide feedback.</small></article>
+   </div>
+   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>With historical labelled hiring data, supervised learning might estimate time-to-fill. Without labelled categories, unsupervised clustering could reveal groups of similar requisitions. A generative AI assistant could summarise a job description or recruiter notes—but should not independently make hiring decisions. Data privacy, bias, explainability and human oversight matter.</p></aside>
+   <p class="source-note">“Types of AI” can mean different taxonomies. The practical categories above describe learning approaches and capabilities used in business. Narrow AI / Artificial General Intelligence / superintelligence is a separate capability-based discussion; AGI and superintelligence remain theoretical rather than ordinary enterprise tools.</p>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">07</span><div><div class="eyebrow">Consulting toolkit</div><h5>Structure the problem before jumping to a solution.</h5></div></div>
+   <div class="toolkit-grid">
+    <div><b>Process discovery</b><small>Stakeholder interviews · process mapping · SIPOC · swimlane diagrams</small></div>
+    <div><b>Problem diagnosis</b><small>Root-cause analysis · 5 Whys · Fishbone · Pareto · gap analysis</small></div>
+    <div><b>Process improvement</b><small>Lean · Six Sigma · waste identification · standardisation</small></div>
+    <div><b>Solution definition</b><small>As-is / To-be · functional & non-functional requirements · user stories · acceptance criteria</small></div>
+    <div><b>Business justification</b><small>ROI · cost-benefit analysis · business case · effort-impact prioritisation</small></div>
+    <div><b>Performance measurement</b><small>KPI · SLA · TAT · baseline · target state · benefits realisation</small></div>
+   </div>
+   <aside class="example-note"><span>ILLUSTRATIVE CLIENT EXAMPLE · HR SERVICES FIRM</span><p>I would map the candidate journey from requisition to joining, measure baseline time at each stage, use a Pareto view to locate the biggest delay, define a to-be workflow, estimate hours saved and agree success measures with stakeholders.</p></aside>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">08</span><div><div class="eyebrow">What the role involves</div><h5>From opportunity identification to benefits realisation.</h5></div></div>
+   <div class="role-lifecycle">
+    <div><span>01</span><b>Opportunity identification</b><small>Process study · process assessments · design thinking sessions</small></div>
+    <div><span>02</span><b>Solution conceptualisation</b><small>Understand business processes and existing IT landscape; propose relevant digital solutions</small></div>
+    <div><span>03</span><b>Stakeholder communication & approvals</b><small>Engage client and Infosys BPM operations stakeholders; obtain buy-in</small></div>
+    <div><span>04</span><b>Requirements documentation</b><small>Gather, analyse and document functional and non-functional requirements</small></div>
+    <div><span>05</span><b>Development coordination & UAT</b><small>Liaise with development teams; participate in User Acceptance Testing</small></div>
+    <div><span>06</span><b>Benefits realisation</b><small>Validate proposed benefits and capture case studies / client testimonials</small></div>
+    <div><span>07</span><b>Reporting & MIS</b><small>Provide inputs to CoE teams for periodic reporting and Management Information Systems</small></div>
+   </div>
+   <div class="callout-line"><span>What ties it together</span><b>Be a solution champion: articulate the problem, show value for money, build stakeholder confidence and follow through to measurable outcomes.</b></div>
+  </section>
+
+  <section class="story-section outcome-section">
+   <div class="section-heading"><span class="section-index">09</span><div><div class="eyebrow">The outcome</div><h5>What does better actually look like?</h5></div></div>
+   <div class="outcome-row">
+    <div><strong>↓</strong><b>Turnaround time</b><small>Faster processing</small></div>
+    <div><strong>↓</strong><b>Manual effort</b><small>Less repetitive work</small></div>
+    <div><strong>↑</strong><b>Accuracy</b><small>Fewer errors, better control</small></div>
+    <div><strong>↑</strong><b>Visibility</b><small>Clearer decisions</small></div>
+   </div>
+   <p class="closing-thought">So, the way I see Digital Delivery is: understand the business, improve the process, use technology thoughtfully, bring people along and measure whether the change made a difference.</p>
+  </section>
+  <div class="source-note">This is my synthesis of Infosys BPM's business and digital delivery model, not a claim that every engagement follows an identical sequence or uses every technology.</div>
+ </div>
+
+ <div id="motivation" class="subpanel hidden">
+  <section class="story-hero">
+   <div class="eyebrow">02 / Why I want to join</div>
+   <h4>I want to move from delivering within complex workflows to helping improve how those workflows are designed.</h4>
+   <p>There is a thread through my journey: understanding a brief, working with different specialists, solving practical problems and getting work delivered. I want to build on that in a business and technology environment.</p>
+   <div class="hero-stamp"><span class="stamp-icon">↗</span><span>WHAT I'VE DONE<br><b>→</b> WHAT I CAN BRING<br><b>→</b> WHAT I WANT TO LEARN</span></div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">01</span><div><div class="eyebrow">Where I come from</div><h5>Different experiences. A common thread.</h5></div></div>
+   <div class="journey-cards">
+    <article><span class="journey-icon">⌁</span><div class="eyebrow">Engineering</div><b>Think structurally</b><p>My Electrical Engineering background gave me a technical foundation and a way of approaching problems systematically.</p></article>
+    <article><span class="journey-icon">◇</span><div class="eyebrow">VFX & gaming</div><b>Understand production</b><p>Creative production taught me that work is interdependent. Assets, specialists, reviews, hand-offs and deadlines all have to come together.</p></article>
+    <article><span class="journey-icon">▦</span><div class="eyebrow">IIM Amritsar</div><b>Connect work to business</b><p>My MBA is helping me build a broader view through operations, analytics, marketing and strategy.</p></article>
+    <article><span class="journey-icon">↗</span><div class="eyebrow">Crossing Hurdles</div><b>Apply process thinking</b><p>I worked on recruitment operations, trackers, compliance visibility, contracts and follow-up workflows in a Founder’s Office setting.</p></article>
+   </div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">02</span><div><div class="eyebrow">What I bring</div><h5>I can look at a problem from more than one angle.</h5></div></div>
+   <div class="bring-layout">
+    <div class="bring-core"><span>AM</span><b>My perspective</b><small>Creative + technical + business</small></div>
+    <div class="bring-list">
+     <div><b>Structured thinking</b><small>Breaking a broad problem into understandable parts.</small></div>
+     <div><b>Production awareness</b><small>Knowing how dependencies and hand-offs affect delivery.</small></div>
+     <div><b>Team coordination</b><small>Working with different skills, priorities and stakeholders.</small></div>
+     <div><b>Business curiosity</b><small>Asking what outcome the work is meant to improve.</small></div>
+    </div>
+   </div>
+  </section>
+
+  <section class="story-section">
+   <div class="section-heading"><span class="section-index">03</span><div><div class="eyebrow">What I want to learn</div><h5>Build the toolkit to deliver change at scale.</h5></div></div>
+   <div class="learn-grid">
+    <div><span>01</span><b>Business analysis</b><small>Requirements, process discovery and root-cause analysis.</small></div>
+    <div><span>02</span><b>Solution thinking</b><small>Evaluating options and translating needs into designs.</small></div>
+    <div><span>03</span><b>Digital capabilities</b><small>Understanding automation, AI and data use cases in practice.</small></div>
+    <div><span>04</span><b>Client delivery</b><small>Stakeholder management, implementation and measurable outcomes.</small></div>
+   </div>
+  </section>
+
+  <section class="story-section outcome-section">
+   <div class="section-heading"><span class="section-index">04</span><div><div class="eyebrow">Why this next step</div><h5>A natural progression, with a lot still to learn.</h5></div></div>
+   <p class="closing-thought">I have worked inside complex creative production environments and started applying process thinking to business operations. I now want to develop the skills to analyse, improve and help deliver those changes at an organisational scale. Infosys BPM's Digital Delivery space brings together the process, technology and people dimensions that I want to work with.</p>
+  </section>
+ </div>
+</section>
+</main>
+<footer><span class="footer-mark">A / S</span><span>Personal introduction · 1920 × 1080</span></footer>
+</div>
+<script>
+const stage=document.querySelector('.stage');
+const buttons=[...document.querySelectorAll('.node')];
+const views=[...document.querySelectorAll('.view')];
+function show(id){
+ views.forEach(v=>v.classList.toggle('hidden',v.id!==id));
+ buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+ stage.classList.add('compact');
+ if(id==='infosys') showSub('understanding');
+ document.querySelector('.panel').scrollTop=0;
+}
+buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+const subButtons=[...document.querySelectorAll('.subchapter')];
+const subPanels=[...document.querySelectorAll('.subpanel')];
+function showSub(id){
+ subPanels.forEach(p=>p.classList.toggle('hidden',p.id!==id));
+ subButtons.forEach(b=>b.classList.toggle('active',b.dataset.sub===id));
+ document.querySelector('.panel').scrollTop=0;
+ document.getElementById('infosysNav').classList.add('compact');
+}
+subButtons.forEach(b=>b.addEventListener('click',()=>showSub(b.dataset.sub)));
+</script>
+</body>
+</html>
